@@ -1,3 +1,9 @@
+.titulo_header {
+    position: absolute;
+    left: 50%;
+    transform: translate( -50%, 50%);
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
 }
@@ -8,8 +14,5 @@ body {
     top: 25%;
     left: 50%;
     transform: translate( -50%, 50%);
-}
-
-.mudar_nome {
-    font-family: 'Montserrat', sans-serif;
+    padding: 15%;
 }
