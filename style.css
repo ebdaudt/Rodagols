@@ -1,18 +1,42 @@
-.titulo_header {
-    position: absolute;
-    left: 50%;
-    transform: translate( -50%, 50%);
-}
-
-body {
+* {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;   
     font-family: 'Montserrat', sans-serif;
 }
 
-.botoes {
-    background-color: rgb(0, 0, 0, 0.9);
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-image: url(assets/tela_de_fundo_sinalizador.jpg);
+}
+
+header {
     position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translate( -50%, 50%);
-    padding: 15%;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7); 
+    padding: 10px 0; /* Adicione algum espaçamento para melhor legibilidade */
+    z-index: 1; /* Certifique-se de que o cabeçalho esteja acima do conteúdo */
+}
+
+.titulo_header {
+    text-align: center;
+    color: white;
+}
+
+.botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 10%;
+    background-color: rgba(0, 0, 0, 0.5); 
+}
+
+.mudar_nome {
+    padding: .4rem;
+    border-radius: 6px;
 }
