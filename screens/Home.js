@@ -1,35 +1,53 @@
 import React, { useEffect } from "react";
-import { View, TouchableOpacity, Text, Image, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from '@expo/vector-icons';
 import colors from '../colors';
 import { Entypo } from '@expo/vector-icons';
-const catImageUrl = "https://i.guim.co.uk/img/media/26392d05302e02f7bf4eb143bb84c8097d09144b/446_167_3683_2210/master/3683.jpg?width=1200&height=1200&quality=85&auto=format&fit=crop&s=49ed3252c0b2ffb49cf8b508892e452d";
 
 const Home = () => {
-
     const navigation = useNavigation();
 
     useEffect(() => {
         navigation.setOptions({
             headerLeft: () => (
-                <FontAwesome name="search" size={24} color={colors.gray} style={{ marginLeft: 15 }} />
+                <Text style={styles.headerText}>Home</Text>
             ),
+            headerTitle: "RODAGOLS",
+            headerTitleAlign: 'center',
             headerRight: () => (
-                <Image
-                    source={{ uri: catImageUrl }}
-                    style={{
-                        width: 40,
-                        height: 40,
-                        marginRight: 15,
+                <TouchableOpacity
+                    onPress={() => {
+                        // Função opcional para lidar com o pressionamento do ícone de perfil
                     }}
-                />
+                    style={styles.headerIconContainer}
+                >
+                    <FontAwesome name="user" size={24} color={colors.black} />
+                </TouchableOpacity>
             ),
         });
     }, [navigation]);
 
     return (
         <View style={styles.container}>
+            <View style={styles.infoContainer}>
+                <Text style={styles.welcomeText}>Bem-vindo ao Rodagols!</Text>
+                <Text style={styles.infoText}>Aproveite o chat e interaja com respeito.</Text>
+                <Text style={styles.infoText}>Seja gentil e divirta-se!</Text>
+
+                <View style={styles.additionalInfo}>
+                    <Text style={styles.infoBlockHeader}>Dicas para uma Boa Convivência:</Text>
+                    <Text style={styles.infoBlockText}>🔴 Mantenha sempre um tom amigável.</Text>
+                    <Text style={styles.infoBlockText}>🔴 Evite discussões desnecessárias.</Text>
+                    <Text style={styles.infoBlockText}>🔴 Respeite a opinião dos outros.</Text>
+                </View>
+
+                <View style={styles.additionalInfo}>
+                    <Text style={styles.infoBlockHeader}>Recursos Disponíveis:</Text>
+                    <Text style={styles.infoBlockText}>✅ Chat em tempo real com outros torcedores.</Text>
+                </View>
+            </View>
+
             <TouchableOpacity
                 onPress={() => navigation.navigate("Chat")}
                 style={styles.chatButton}
@@ -50,13 +68,13 @@ const styles = StyleSheet.create({
         backgroundColor: "#fff",
     },
     chatButton: {
-        backgroundColor: 'red', 
+        backgroundColor: 'red',
         height: 50,
         width: 50,
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',
-        shadowColor: 'red', 
+        shadowColor: 'red',
         shadowOffset: {
             width: 0,
             height: 2,
@@ -65,5 +83,48 @@ const styles = StyleSheet.create({
         shadowRadius: 8,
         marginRight: 20,
         marginBottom: 50,
-    }
+    },
+    headerText: {
+        marginLeft: 15,
+        fontSize: 18,
+        color: colors.black,
+    },
+    headerIconContainer: {
+        marginRight: 15,
+    },
+    infoContainer: {
+        position: 'absolute',
+        top: 50,
+        left: 20,
+        right: 20,
+    },
+    welcomeText: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        color: colors.primary,
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    infoText: {
+        fontSize: 16,
+        color: '#000', // Preto
+        marginBottom: 10,
+    },
+    additionalInfo: {
+        backgroundColor: colors.mediumGray,
+        borderRadius: 10,
+        padding: 15,
+        marginBottom: 20,
+    },
+    infoBlockHeader: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        color: 'red',
+        marginBottom: 10,
+    },
+    infoBlockText: {
+        fontSize: 16,
+        color: colors.black,
+        marginBottom: 5,
+    },
 });

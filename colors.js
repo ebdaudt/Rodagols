@@ -1,6 +1,7 @@
 export default {
-    primary: '#f57c00',
-    gray: '#C5C5C7',
-    mediumGray: '#F6F7FB',
-    lightGray: '#FAFAFA'
+    gray: '#C5C5C7',         // Cinza para ícones
+    lightGray: '#FAFAFA',    // Cinza muito claro para fundos
+    red: '#ff0000',          // Vermelho para botões e texto de destaque
+    lightRed: '#f0f0f0',     // Vermelho claro para fundo de balões de mensagem recebidos
+    white: '#ffffff'         // Branco para fundos e textos
 };
