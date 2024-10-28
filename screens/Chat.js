@@ -1,88 +1,96 @@
 import React, {
-    useState,                // Importa o hook useState para gerenciar o estado no componente
-    useEffect,               // Importa o hook useEffect para executar efeitos colaterais
-    useLayoutEffect,         // Importa o hook useLayoutEffect para layout sincronizado com DOM
-    useCallback              // Importa o hook useCallback para memorizar funções
-  } from 'react';
-  import { TouchableOpacity, Text } from 'react-native'; // Importa componentes do React Native
-  import { GiftedChat, Bubble } from 'react-native-gifted-chat'; // Importa componentes da biblioteca GiftedChat para o chat
-  import {
-    collection,             // Função do Firestore para acessar uma coleção
-    addDoc,                 // Função do Firestore para adicionar um documento à coleção
-    orderBy,                // Função do Firestore para ordenar resultados de uma consulta
-    query,                  // Função do Firestore para criar uma consulta
-    onSnapshot              // Função do Firestore para escutar atualizações em tempo real
-  } from 'firebase/firestore';
-  import { signOut } from 'firebase/auth'; // Importa função para fazer logout do usuário
-  import { auth, database } from '../config/firebase'; // Importa as instâncias de autenticação e banco de dados
-  import { useNavigation } from '@react-navigation/native'; // Importa o hook useNavigation para navegação
-  import { AntDesign } from '@expo/vector-icons'; // Importa ícones da biblioteca Expo Vector Icons
-  import colors from '../colors'; // Importa o objeto de cores definido localmente
+    useState,                
+    useEffect,               
+    useLayoutEffect,         
+    useCallback              
+} from 'react';
+import { TouchableOpacity, Text } from 'react-native';
+import { GiftedChat, Bubble } from 'react-native-gifted-chat'; 
+import {
+    collection,             
+    addDoc,                 
+    orderBy,                
+    query,                  
+    onSnapshot              
+} from 'firebase/firestore';
+import { signOut } from 'firebase/auth';
+import { auth, database } from '../config/firebase';
+import { useNavigation } from '@react-navigation/native';
+import { AntDesign } from '@expo/vector-icons';
+import colors from '../colors'; 
   
+<<<<<<< HEAD
   export default function BeiraRio() { // Define o componente Chat como o padrão exportado
     const [messages, setMessages] = useState([]); // Estado para armazenar as mensagens
     const navigation = useNavigation(); // Hook para acessar a navegação
+=======
+export default function Chat() { 
+    const [messages, setMessages] = useState([]); 
+    const navigation = useNavigation(); 
+>>>>>>> b65ca382bca549ac9d59d97c9033b99e216e62b1
   
-    const onSignOut = () => { // Função para fazer logout do usuário
-        signOut(auth).catch(error => console.log('Error logging out: ', error)); // Tenta fazer logout e exibe erro em caso de falha
+    const onSignOut = () => { 
+        signOut(auth).catch(error => console.log('Error logging out: ', error)); 
     };
   
-    useLayoutEffect(() => { // Hook que executa código após a montagem do layout
-        navigation.setOptions({ // Configurações da barra de navegação
-            headerRight: () => ( // Adiciona um botão de logout à direita no cabeçalho
+    useLayoutEffect(() => { 
+        navigation.setOptions({ 
+            headerRight: () => ( 
                 <TouchableOpacity
                     style={{
-                        marginRight: 10 // Margem à direita do botão
+                        marginRight: 10 
                     }}
-                    onPress={onSignOut} // Função chamada ao pressionar o botão
+                    onPress={onSignOut} 
                 >
                     <AntDesign name="logout" size={24} color={colors.gray} style={{ marginRight: 10 }} />
                 </TouchableOpacity>
             )
         });
-    }, [navigation]); // Dependência da navegação para reexecutar o efeito quando necessário
+    }, [navigation]); 
   
-    useLayoutEffect(() => { // Hook que executa código após a montagem do layout
-        const collectionRef = collection(database, 'chats'); // Referência à coleção 'chats' no Firestore
-        const q = query(collectionRef, orderBy('createdAt', 'desc')); // Cria uma consulta para ordenar as mensagens pela data de criação em ordem decrescente
+    useLayoutEffect(() => { 
+        const collectionRef = collection(database, 'chats'); 
+        const q = query(collectionRef, orderBy('createdAt', 'desc')); 
   
-        const unsubscribe = onSnapshot(q, querySnapshot => { // Escuta em tempo real as atualizações na coleção 'chats'
-            console.log('querySnapshot unsubscribe'); // Log para indicar quando o snapshot é atualizado
-            setMessages( // Atualiza o estado das mensagens com os dados do Firestore
-                querySnapshot.docs.map(doc => ({ // Mapeia cada documento para o formato esperado pelo GiftedChat
-                    _id: doc.data()._id, // ID da mensagem
-                    createdAt: doc.data().createdAt.toDate(), // Data de criação da mensagem
-                    text: doc.data().text, // Texto da mensagem
-                    user: doc.data().user // Dados do usuário que enviou a mensagem
+        const unsubscribe = onSnapshot(q, querySnapshot => { 
+            console.log('querySnapshot unsubscribe');
+            setMessages( 
+                querySnapshot.docs.map(doc => ({ 
+                    _id: doc.data()._id, 
+                    createdAt: doc.data().createdAt.toDate(), 
+                    text: doc.data().text, 
+                    user: doc.data().user 
                 }))
             );
         });
-        return unsubscribe; // Retorna a função de limpeza para parar de escutar as atualizações
-    }, []); // Executa apenas uma vez após a montagem do componente
+        return unsubscribe; 
+    }, []); 
   
-    const onSend = useCallback((messages = []) => { // Função chamada ao enviar uma nova mensagem
-        setMessages(previousMessages => // Atualiza o estado das mensagens com a nova mensagem
-            GiftedChat.append(previousMessages, messages) // Adiciona a nova mensagem à lista existente
+    const onSend = useCallback((messages = []) => { 
+        setMessages(previousMessages => 
+            GiftedChat.append(previousMessages, messages) 
         );
-        const { _id, createdAt, text, user } = messages[0]; // Desestrutura a primeira mensagem do array
-        addDoc(collection(database, 'chats'), { // Adiciona a nova mensagem à coleção 'chats' no Firestore
-            _id, // ID da mensagem
-            createdAt, // Data de criação da mensagem
-            text, // Texto da mensagem
-            user // Dados do usuário que enviou a mensagem
+        const { _id, createdAt, text, user } = messages[0]; 
+        addDoc(collection(database, 'chats'), { 
+            _id, 
+            createdAt, 
+            text, 
+            user 
         });
-    }, []); // Usa useCallback para memorizar a função e evitar recriação desnecessária
+    }, []); 
   
-    const renderBubble = (props) => { // Função para renderizar o balão de mensagem com estilos personalizados
+    const renderBubble = (props) => { 
         return (
             <Bubble
-                {...props} // Props do GiftedChat para o balão de mensagem
+                {...props} 
                 wrapperStyle={{
                     right: {
-                        backgroundColor: 'red' // Cor de fundo do balão das mensagens enviadas pelo usuário
+                        backgroundColor: colors.red 
                     },
                     left: {
-                        backgroundColor: '#f0f0f0' // Cor de fundo do balão das mensagens recebidas
+                        backgroundColor: colors.mediumGray, 
+                        borderWidth: 1, 
+                        borderColor: colors.gray 
                     }
                 }}
             />
@@ -91,23 +99,24 @@ import React, {
   
     return (
         <GiftedChat
-            messages={messages} // Passa as mensagens para o GiftedChat
-            showAvatarForEveryMessage={false} // Não exibe o avatar para cada mensagem
-            showUserAvatar={false} // Não exibe o avatar do usuário
-            onSend={messages => onSend(messages)} // Chama a função onSend ao enviar uma mensagem
+            messages={messages} 
+            showAvatarForEveryMessage={false} 
+            showUserAvatar={false} 
+            onSend={messages => onSend(messages)} 
             messagesContainerStyle={{
-                backgroundColor: '#fff' // Define a cor de fundo da área de mensagens
+                backgroundColor: colors.lightGray // Cor de fundo da área de mensagens
             }}
             textInputStyle={{
-                backgroundColor: '#fff', // Define a cor de fundo do campo de entrada de texto
-                borderRadius: 20, // Define bordas arredondadas para o campo de entrada de texto
+                backgroundColor: '#fff', 
+                borderRadius: 15, // Alteração leve na borda arredondada
+                borderWidth: 1, // Borda no campo de entrada de texto
+                borderColor: colors.gray // Cor da borda do campo de texto
             }}
             user={{
-                _id: auth?.currentUser?.email, // Define o ID do usuário com base no email do usuário autenticado
-                avatar: 'https://i.pravatar.cc/300' // URL do avatar do usuário
+                _id: auth?.currentUser?.email, 
+                avatar: 'https://i.pravatar.cc/300' 
             }}
-            renderBubble={renderBubble} // Renderiza o balão de mensagem com a função personalizada
+            renderBubble={renderBubble} 
         />
     );
-  }
-  
+}
