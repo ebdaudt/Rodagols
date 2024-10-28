@@ -3,7 +3,8 @@ import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from '@expo/vector-icons';
 import colors from '../colors';
-import { Entypo } from '@expo/vector-icons';
+import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { TwitterAuthProvider } from "firebase/auth";
 
 const Home = () => {
     const navigation = useNavigation();
@@ -49,10 +50,18 @@ const Home = () => {
             </View>
 
             <TouchableOpacity
-                onPress={() => navigation.navigate("Chat")}
+                onPress={() => navigation.navigate("BeiraRio")}
                 style={styles.chatButton}
             >
-                <Entypo name="chat" size={24} color={colors.lightGray} />
+                <MaterialCommunityIcons  name="stadium-variant" size={24} color={colors.lightGray} />
+                <Text style={{fontSize: 14, color:'white', marginLeft: 4}}>Beira-Rio</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                onPress={() => navigation.navigate("Arena")}
+                style={styles.chatButton2}
+            >
+                <MaterialCommunityIcons  name="stadium-variant" size={24} color={colors.lightGray} />
+                <Text style={{fontSize: 14, color:'white', marginLeft: 4}}>Arena OAS</Text>
             </TouchableOpacity>
         </View>
     );
@@ -70,7 +79,7 @@ const styles = StyleSheet.create({
     chatButton: {
         backgroundColor: 'red',
         height: 50,
-        width: 50,
+        width: 120,
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',
@@ -83,6 +92,25 @@ const styles = StyleSheet.create({
         shadowRadius: 8,
         marginRight: 20,
         marginBottom: 50,
+        flexDirection:'row'
+    },
+    chatButton2: {
+        backgroundColor: 'blue',
+        height: 50,
+        width: 120,
+        borderRadius: 25,
+        alignItems: 'center',
+        justifyContent: 'center',
+        shadowColor: 'blue',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.9,
+        shadowRadius: 8,
+        marginRight: 20,
+        marginBottom: 50,
+        flexDirection:'row'
     },
     headerText: {
         marginLeft: 15,
@@ -107,7 +135,7 @@ const styles = StyleSheet.create({
     },
     infoText: {
         fontSize: 16,
-        color: '#000', // Preto
+        color: '#000',
         marginBottom: 10,
     },
     additionalInfo: {

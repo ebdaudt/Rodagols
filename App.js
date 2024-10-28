@@ -6,7 +6,8 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './config/firebase';
 import Login from './screens/Login';
 import Signup from './screens/Signup';
-import Chat from './screens/Chat';
+import BeiraRio from './screens/Chat';
+import Arena from './screens/Chat2';
 import Home from './screens/Home';
 
 // Cria um Stack Navigator
@@ -31,7 +32,8 @@ function ChatStack() {
   return (
     <Stack.Navigator defaultScreenOptions={Home}>
       <Stack.Screen name='Home' component={Home} />
-      <Stack.Screen name='Chat' component={Chat} />
+      <Stack.Screen name='BeiraRio' component={BeiraRio} options={{ title: 'Beira-Rio' }} />
+      <Stack.Screen name='Arena' component={Arena} />
     </Stack.Navigator>
   );
 }

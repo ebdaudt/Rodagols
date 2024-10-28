@@ -19,7 +19,7 @@ import React, {
   import { AntDesign } from '@expo/vector-icons'; // Importa ícones da biblioteca Expo Vector Icons
   import colors from '../colors'; // Importa o objeto de cores definido localmente
   
-  export default function BeiraRio() { // Define o componente Chat como o padrão exportado
+  export default function Arena() { // Define o componente Chat como o padrão exportado
     const [messages, setMessages] = useState([]); // Estado para armazenar as mensagens
     const navigation = useNavigation(); // Hook para acessar a navegação
   
@@ -43,7 +43,7 @@ import React, {
     }, [navigation]); // Dependência da navegação para reexecutar o efeito quando necessário
   
     useLayoutEffect(() => { // Hook que executa código após a montagem do layout
-        const collectionRef = collection(database, 'chats'); // Referência à coleção 'chats' no Firestore
+        const collectionRef = collection(database, 'chats2'); // Referência à coleção 'chats' no Firestore
         const q = query(collectionRef, orderBy('createdAt', 'desc')); // Cria uma consulta para ordenar as mensagens pela data de criação em ordem decrescente
   
         const unsubscribe = onSnapshot(q, querySnapshot => { // Escuta em tempo real as atualizações na coleção 'chats'
@@ -65,7 +65,7 @@ import React, {
             GiftedChat.append(previousMessages, messages) // Adiciona a nova mensagem à lista existente
         );
         const { _id, createdAt, text, user } = messages[0]; // Desestrutura a primeira mensagem do array
-        addDoc(collection(database, 'chats'), { // Adiciona a nova mensagem à coleção 'chats' no Firestore
+        addDoc(collection(database, 'chats2'), { // Adiciona a nova mensagem à coleção 'chats' no Firestore
             _id, // ID da mensagem
             createdAt, // Data de criação da mensagem
             text, // Texto da mensagem
