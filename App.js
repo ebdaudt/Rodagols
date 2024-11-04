@@ -9,6 +9,7 @@ import Signup from './screens/Signup';
 import BeiraRio from './screens/Chat';
 import Arena from './screens/Chat2';
 import Home from './screens/Home';
+import UserSettings from './screens/UserSettings';
 
 // Cria um Stack Navigator
 const Stack = createStackNavigator();
@@ -34,6 +35,7 @@ function ChatStack() {
       <Stack.Screen name='Home' component={Home} />
       <Stack.Screen name='BeiraRio' component={BeiraRio} options={{ title: 'Beira-Rio' }} />
       <Stack.Screen name='Arena' component={Arena} />
+      <Stack.Screen name='UserSettings' component={UserSettings}  options={{ title: 'Configurações' }} />
     </Stack.Navigator>
   );
 }

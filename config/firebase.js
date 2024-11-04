@@ -1,7 +1,7 @@
 // Importa a função para inicializar o Firebase
 import { initializeApp } from "firebase/app";
 // Importa a função para obter a instância de autenticação
-import { getAuth } from "firebase/auth";
+import { getAuth, deleteUser, sendPasswordResetEmail } from "firebase/auth";
 // Importa a função para obter a instância do Firestore (banco de dados)
 import { getFirestore } from "firebase/firestore";
 
@@ -17,6 +17,37 @@ const firebaseConfig = {
 
 // Inicializa o Firebase com a configuração fornecida
 initializeApp(firebaseConfig);
+
+export const excluirUsuario = async () => {
+  const auth = getAuth();
+  const usuarioAtual = auth.currentUser;
+
+  if (usuarioAtual) {
+      try {
+          await deleteUser(usuarioAtual);
+          console.log("Usuário excluído com sucesso!");
+          // Aqui você pode redirecionar o usuário para a tela de login, por exemplo
+      } catch (error) {
+          console.error("Erro ao excluir usuário:", error);
+          // Dependendo do erro, pode ser necessário solicitar uma nova autenticação
+      }
+  } else {
+      console.log("Nenhum usuário autenticado.");
+  }
+};
+
+export const redefinirSenha = async () => {
+  if (auth.currentUser) {
+      try {
+          await sendPasswordResetEmail(auth, auth.currentUser.email);
+          Alert.alert("Sucesso", "E-mail de redefinição de senha enviado para " + auth.currentUser.email);
+      } catch (error) {
+          Alert.alert("Erro", "Não foi possível enviar o e-mail de redefinição de senha.");
+      }
+  } else {
+      Alert.alert("Erro", "Nenhum usuário está logado.");
+  }
+};
 
 // Exporta a instância de autenticação para ser utilizada em outras partes do app
 export const auth = getAuth();

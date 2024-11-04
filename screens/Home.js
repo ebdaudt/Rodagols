@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import { View, TouchableOpacity, Text, StyleSheet, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from '@expo/vector-icons';
 import colors from '../colors';
@@ -8,6 +8,9 @@ import { TwitterAuthProvider } from "firebase/auth";
 
 const Home = () => {
     const navigation = useNavigation();
+
+    const logoBeira = require('../assets/beira.webp')
+    const logoArena = require('../assets/arena.jpg')
 
     useEffect(() => {
         navigation.setOptions({
@@ -18,9 +21,7 @@ const Home = () => {
             headerTitleAlign: 'center',
             headerRight: () => (
                 <TouchableOpacity
-                    onPress={() => {
-                        // Função opcional para lidar com o pressionamento do ícone de perfil
-                    }}
+                    onPress={() => {navigation.navigate('UserSettings')}}
                     style={styles.headerIconContainer}
                 >
                     <FontAwesome name="user" size={24} color={colors.black} />
@@ -31,7 +32,7 @@ const Home = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.infoContainer}>
+            {/* <View style={styles.infoContainer}>
                 <Text style={styles.welcomeText}>Bem-vindo ao Rodagols!</Text>
                 <Text style={styles.infoText}>Aproveite o chat e interaja com respeito.</Text>
                 <Text style={styles.infoText}>Seja gentil e divirta-se!</Text>
@@ -47,21 +48,29 @@ const Home = () => {
                     <Text style={styles.infoBlockHeader}>Recursos Disponíveis:</Text>
                     <Text style={styles.infoBlockText}>✅ Chat em tempo real com outros torcedores.</Text>
                 </View>
-            </View>
+            </View> */}
 
             <TouchableOpacity
                 onPress={() => navigation.navigate("BeiraRio")}
                 style={styles.chatButton}
             >
-                <MaterialCommunityIcons  name="stadium-variant" size={24} color={colors.lightGray} />
-                <Text style={{fontSize: 14, color:'white', marginLeft: 4}}>Beira-Rio</Text>
+                <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoBeira}>
+
+                </Image>
+                <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
+                    <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
+                    <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Beira-Rio</Text>
+                </View>
             </TouchableOpacity>
             <TouchableOpacity
                 onPress={() => navigation.navigate("Arena")}
                 style={styles.chatButton2}
             >
-                <MaterialCommunityIcons  name="stadium-variant" size={24} color={colors.lightGray} />
-                <Text style={{fontSize: 14, color:'white', marginLeft: 4}}>Arena OAS</Text>
+                <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoArena}></Image>
+                <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
+                    <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
+                    <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Arena</Text>
+                </View>
             </TouchableOpacity>
         </View>
     );
@@ -72,42 +81,29 @@ export default Home;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'flex-end',
-        alignItems: 'flex-end',
+        justifyContent: 'center',
+        alignItems: 'center',
         backgroundColor: "#fff",
+        flexDirection: 'row'
     },
     chatButton: {
         backgroundColor: 'red',
-        height: 50,
-        width: 120,
+        height: '80%',
+        width: '45%',
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',
-        shadowColor: 'red',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.9,
-        shadowRadius: 8,
         marginRight: 20,
         marginBottom: 50,
         flexDirection:'row'
     },
     chatButton2: {
         backgroundColor: 'blue',
-        height: 50,
-        width: 120,
+        height: '80%',
+        width: '45%',
         borderRadius: 25,
         alignItems: 'center',
         justifyContent: 'center',
-        shadowColor: 'blue',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.9,
-        shadowRadius: 8,
         marginRight: 20,
         marginBottom: 50,
         flexDirection:'row'

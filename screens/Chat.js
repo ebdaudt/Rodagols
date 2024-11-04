@@ -19,15 +19,9 @@ import { useNavigation } from '@react-navigation/native';
 import { AntDesign } from '@expo/vector-icons';
 import colors from '../colors'; 
   
-<<<<<<< HEAD
-  export default function BeiraRio() { // Define o componente Chat como o padrão exportado
-    const [messages, setMessages] = useState([]); // Estado para armazenar as mensagens
-    const navigation = useNavigation(); // Hook para acessar a navegação
-=======
-export default function Chat() { 
+  export default function BeiraRio() { 
     const [messages, setMessages] = useState([]); 
     const navigation = useNavigation(); 
->>>>>>> b65ca382bca549ac9d59d97c9033b99e216e62b1
   
     const onSignOut = () => { 
         signOut(auth).catch(error => console.log('Error logging out: ', error)); 
@@ -104,13 +98,13 @@ export default function Chat() {
             showUserAvatar={false} 
             onSend={messages => onSend(messages)} 
             messagesContainerStyle={{
-                backgroundColor: colors.lightGray // Cor de fundo da área de mensagens
+                backgroundColor: colors.lightGray 
             }}
             textInputStyle={{
                 backgroundColor: '#fff', 
-                borderRadius: 15, // Alteração leve na borda arredondada
-                borderWidth: 1, // Borda no campo de entrada de texto
-                borderColor: colors.gray // Cor da borda do campo de texto
+                borderRadius: 15, 
+                borderWidth: 1, 
+                borderColor: colors.gray
             }}
             user={{
                 _id: auth?.currentUser?.email, 
