@@ -50,7 +50,7 @@ export default function Signup({ navigation }) {
         <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
           <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Já possui uma conta? </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-            <Text style={{color: '#800080', fontWeight: '600', fontSize: 14}}> Entrar</Text>
+            <Text style={{color: '#008000', fontWeight: '600', fontSize: 14}}> Entrar</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 36,
     fontWeight: 'bold',
-    color: "#800080",  
+    color: "#008000",  
     alignSelf: "center",
     paddingBottom: 24,
   },
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 30,
   },
   button: {
-    backgroundColor: '#800080',  
+    backgroundColor: '#008000',  
     height: 58,
     borderRadius: 10,
     justifyContent: 'center',

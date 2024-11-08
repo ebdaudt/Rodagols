@@ -13,34 +13,14 @@ import {
     query,                  
     onSnapshot              
 } from 'firebase/firestore';
-import { signOut } from 'firebase/auth';
 import { auth, database } from '../config/firebase';
 import { useNavigation } from '@react-navigation/native';
-import { AntDesign } from '@expo/vector-icons';
 import colors from '../colors'; 
   
-  export default function BeiraRio() { 
+export default function BeiraRio() { 
     const [messages, setMessages] = useState([]); 
     const navigation = useNavigation(); 
   
-    const onSignOut = () => { 
-        signOut(auth).catch(error => console.log('Error logging out: ', error)); 
-    };
-  
-    useLayoutEffect(() => { 
-        navigation.setOptions({ 
-            headerRight: () => ( 
-                <TouchableOpacity
-                    style={{
-                        marginRight: 10 
-                    }}
-                    onPress={onSignOut} 
-                >
-                    <AntDesign name="logout" size={24} color={colors.gray} style={{ marginRight: 10 }} />
-                </TouchableOpacity>
-            )
-        });
-    }, [navigation]); 
   
     useLayoutEffect(() => { 
         const collectionRef = collection(database, 'chats'); 
@@ -90,6 +70,17 @@ import colors from '../colors';
             />
         );
     };
+
+    const renderSend = (props) => {
+        const { text, onSend } = props;
+        return (
+            text.trim().length > 0 && (
+                <TouchableOpacity onPress={() => onSend({ text: text.trim() }, true)} style={{ padding: 10 }}>
+                    <Text style={{ color: 'red', fontWeight: 'bold', fontSize: 18 }}>Send</Text>
+                </TouchableOpacity>
+            )
+        );
+    };
   
     return (
         <GiftedChat
@@ -111,6 +102,7 @@ import colors from '../colors';
                 avatar: 'https://i.pravatar.cc/300' 
             }}
             renderBubble={renderBubble} 
+            renderSend={renderSend} 
         />
     );
 }

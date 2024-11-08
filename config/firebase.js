@@ -1,9 +1,10 @@
 // Importa a função para inicializar o Firebase
 import { initializeApp } from "firebase/app";
 // Importa a função para obter a instância de autenticação
-import { getAuth, deleteUser, sendPasswordResetEmail } from "firebase/auth";
+import { getAuth, deleteUser, sendPasswordResetEmail, signOut } from "firebase/auth";
 // Importa a função para obter a instância do Firestore (banco de dados)
 import { getFirestore } from "firebase/firestore";
+
 
 // Configuração do Firebase com as credenciais do projeto
 const firebaseConfig = {
@@ -47,6 +48,10 @@ export const redefinirSenha = async () => {
   } else {
       Alert.alert("Erro", "Nenhum usuário está logado.");
   }
+};
+
+export const onSignOut = () => { 
+    signOut(auth).catch(error => console.log('Error logging out: ', error)); 
 };
 
 // Exporta a instância de autenticação para ser utilizada em outras partes do app
