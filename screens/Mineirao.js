@@ -7,12 +7,12 @@ import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import colors from '../colors'; 
   
-export default function BeiraRio() { 
+export default function Mineirao() { 
     const [messages, setMessages] = useState([]); 
     const navigation = useNavigation(); 
   
     useLayoutEffect(() => { 
-        const collectionRef = collection(database, 'chats'); 
+        const collectionRef = collection(database, 'mineirao'); 
         const q = query(collectionRef, orderBy('createdAt', 'desc')); 
   
         const unsubscribe = onSnapshot(q, querySnapshot => { 
@@ -34,7 +34,7 @@ export default function BeiraRio() {
             GiftedChat.append(previousMessages, messages) 
         );
         const { _id, createdAt, text, user } = messages[0]; 
-        addDoc(collection(database, 'chats'), { 
+        addDoc(collection(database, 'mineirao'), { 
             _id, 
             createdAt, 
             text, 
