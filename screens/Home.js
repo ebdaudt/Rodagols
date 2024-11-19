@@ -4,7 +4,6 @@ import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from '@expo/vector-icons';
 import colors from '../colors';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import { TwitterAuthProvider } from "firebase/auth";
 
 const Home = () => {
     const navigation = useNavigation();
@@ -55,14 +54,14 @@ const Home = () => {
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoBeira} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Beira-Rio</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Beira-Rio / Inter</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("Arena")} style={styles.chatButton} >
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoArena}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Arena</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Arena / Grêmio</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -71,14 +70,14 @@ const Home = () => {
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoAlfredo} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Alfredo Jaconi</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Alfredo Jaconi / Juventude</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("Heriberto")} style={styles.chatButton} >
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoHeriberto}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Heriberto Hülse</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Heriberto Hülse / Criciúma</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -87,30 +86,14 @@ const Home = () => {
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoLigga} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Ligga Arena</Text>
-                    </View>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate("MRV")} style={styles.chatButton} >
-                    <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoMRV}></Image>
-                    <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
-                        <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Arena MRV</Text>
-                    </View>
-                </TouchableOpacity>
-            </View>
-            <View style={styles.boxLine}>
-                <TouchableOpacity onPress={() => navigation.navigate("Mineirao")} style={styles.chatButton}>
-                    <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoMineirao} />
-                    <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
-                        <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Mineirão</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Ligga Arena / Athletico Paranaense</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("Allianz")} style={styles.chatButton} >
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoAllianz}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Allianz Parque</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Allianz Parque / Palmeiras</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -119,14 +102,14 @@ const Home = () => {
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoQuimica} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Neo Quimica Arena</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Neo Quimica Arena / Corinthians</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("Morumbis")} style={styles.chatButton} >
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoMorumbis}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Morumbis</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Morumbis / São Paulo</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -135,14 +118,14 @@ const Home = () => {
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoNabi} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Nabi Abi Chedid</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Nabi Abi Chedid / Bragantino</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("Maracana")} style={styles.chatButton} >
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoMaracana2}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Maracanã</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Maracanã / Fluminense</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -151,14 +134,14 @@ const Home = () => {
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoMaracana} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Maracanã</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Maracanã / Flamengo</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("Januario")} style={styles.chatButton} >
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoJanuario}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>São Januário</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>São Januário / Vasco</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -167,30 +150,30 @@ const Home = () => {
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoNilton} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Nilton Santos</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Nilton Santos / Botafogo</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => navigation.navigate("Castelao")} style={styles.chatButton} >
-                    <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoCastelao}></Image>
+                <TouchableOpacity onPress={() => navigation.navigate("MRV")} style={styles.chatButton} >
+                    <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoMRV}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Castelão</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Arena MRV / Atlético Mineiro</Text>
                     </View>
                 </TouchableOpacity>
             </View>
             <View style={styles.boxLine}>
-                <TouchableOpacity onPress={() => navigation.navigate("Fonte")} style={styles.chatButton}>
-                    <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoFonte} />
+                <TouchableOpacity onPress={() => navigation.navigate("Mineirao")} style={styles.chatButton}>
+                    <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoMineirao} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Fonte Nova</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Mineirão / Cruzeiro</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("Pantanal")} style={styles.chatButton} >
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoPantanal}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Arena Pantanal</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Arena Pantanal  Cuiaba</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -199,14 +182,30 @@ const Home = () => {
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoAntonio} />
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Antonio Accioly</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Antonio Accioly / Atlético Goianiense</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={() => navigation.navigate("Castelao")} style={styles.chatButton} >
+                    <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoCastelao}></Image>
+                    <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
+                        <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Castelão / Fortaleza</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+            <View style={styles.boxLine}>
+                <TouchableOpacity onPress={() => navigation.navigate("Fonte")} style={styles.chatButton}>
+                    <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoFonte} />
+                    <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
+                        <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Fonte Nova / Bahia</Text>
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => navigation.navigate("Barradao")} style={styles.chatButton} >
                     <Image style={{width: '100%', height: '100%', borderRadius: 10}} source={logoBarradao}></Image>
                     <View style={{position:'absolute', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center', flexDirection: 'row', backgroundColor: 'rgba(0,0,0,0.4)', borderRadius: 10}}>
                         <MaterialCommunityIcons  name="stadium-variant" size={30} color={colors.lightGray} />
-                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Barradão</Text>
+                        <Text style={{fontSize: 30, color:'white', marginLeft: 4, fontWeight:'bold'}}>Barradão / Vitória</Text>
                     </View>
                 </TouchableOpacity>
             </View>

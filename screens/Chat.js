@@ -10,7 +10,7 @@ import colors from '../colors';
 export default function BeiraRio() { 
     const [messages, setMessages] = useState([]); 
     const navigation = useNavigation(); 
-  
+  // Função que carrega as mensagens
     useLayoutEffect(() => { 
         const collectionRef = collection(database, 'chats'); 
         const q = query(collectionRef, orderBy('createdAt', 'desc')); 
@@ -28,7 +28,7 @@ export default function BeiraRio() {
         });
         return unsubscribe; 
     }, []); 
-  
+  // Função para mandar mensagem para o firebase
     const onSend = useCallback((messages = []) => { 
         setMessages(previousMessages => 
             GiftedChat.append(previousMessages, messages) 
@@ -67,7 +67,7 @@ export default function BeiraRio() {
                 color: 'whiteaeqwe'
               }}
               textInputProps={{
-                autoFocus: true, // garante o foco automático no input
+                autoFocus: true, 
             }}
             />
         );

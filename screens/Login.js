@@ -9,14 +9,20 @@ export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const onHandleLogin = () => {
+// Login
+
+const onHandleLogin = () => {
+    // Verifica se os campos de e-mail e senha não estão vazios
     if (email != "" && password != "") {
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => console.log("Login success"))
-        .catch((err) => Alert.alert("Login error", err.message));
+        // Tenta realizar o login do usuário com o Firebase Authentication
+        signInWithEmailAndPassword(auth, email, password)
+            .then(() => console.log("Login success"))
+            // Caso ocorra um erro no login, exibe um alerta com a mensagem do erro
+            .catch((err) => Alert.alert("Login error", err.message));
     }
-  };
-  
+};
+
+
   return (
     <View style={styles.container}>
       <Image source={backImage} style={styles.backImage} />

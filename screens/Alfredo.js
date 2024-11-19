@@ -6,7 +6,7 @@ import { auth, database } from '../config/firebase';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import colors from '../colors'; 
-  
+
 export default function Alfredo() { 
     const [messages, setMessages] = useState([]); 
     const navigation = useNavigation(); 

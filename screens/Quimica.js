@@ -67,7 +67,7 @@ export default function Quimica() {
                 color: 'whiteaeqwe'
               }}
               textInputProps={{
-                autoFocus: true, // garante o foco automático no input
+                autoFocus: true, 
             }}
             />
         );

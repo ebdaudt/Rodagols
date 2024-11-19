@@ -67,7 +67,7 @@ export default function Allianz() {
                 color: 'whiteaeqwe'
               }}
               textInputProps={{
-                autoFocus: true, // garante o foco automático no input
+                autoFocus: true, 
             }}
             />
         );
