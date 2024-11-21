@@ -73,18 +73,17 @@ function ChatStack() {
   );
 }
 
+
 // Login
 
-// Função AuthStack define a navegação entre as telas de login e cadastro
+// Componente que define as telas relacionadas à autenticação no aplicativo
 function AuthStack() {
   return (
-    // Configura o Stack Navigator para não exibir cabeçalho nas telas
+    // Configuração do navegador de pilha (Stack Navigator) do React Navigation
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      
-      // Tela de Login: será exibida quando o usuário acessar a página de login
+      {/* Define a tela de login como parte da navegação */}
       <Stack.Screen name='Login' component={Login} />
-      
-      // Tela de Signup (Cadastro): será exibida quando o usuário acessar a página de cadastro
+      {/* Define a tela de cadastro como parte da navegação */}
       <Stack.Screen name='Signup' component={Signup} />
     </Stack.Navigator>
   );

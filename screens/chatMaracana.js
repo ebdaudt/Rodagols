@@ -7,12 +7,12 @@ import { useNavigation } from '@react-navigation/native';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import colors from '../colors'; 
   
-export default function Alfredo() { 
+export default function Maracana() { 
     const [messages, setMessages] = useState([]); 
     const navigation = useNavigation(); 
   
     useLayoutEffect(() => { 
-        const collectionRef = collection(database, 'alfredo'); 
+        const collectionRef = collection(database, 'chatMaracana'); 
         const q = query(collectionRef, orderBy('createdAt', 'desc')); 
   
         const unsubscribe = onSnapshot(q, querySnapshot => { 
@@ -34,7 +34,7 @@ export default function Alfredo() {
             GiftedChat.append(previousMessages, messages) 
         );
         const { _id, createdAt, text, user } = messages[0]; 
-        addDoc(collection(database, 'alfredo'), { 
+        addDoc(collection(database, 'chats'), { 
             _id, 
             createdAt, 
             text, 
@@ -67,7 +67,7 @@ export default function Alfredo() {
                 color: 'whiteaeqwe'
               }}
               textInputProps={{
-                autoFocus: true, 
+                autoFocus: true, // garante o foco automático no input
             }}
             />
         );
