@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, TextInput, Image, SafeAreaView, TouchableOpacity, StatusBar, Alert } from "react-native";
+import { StyleSheet, Text, View, TextInput, Image, SafeAreaView, TouchableOpacity, StatusBar } from "react-native";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../config/firebase";
 
@@ -8,20 +8,21 @@ const backImage = require("../assets/backImage.jpg");
 export default function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(""); // Estado para mensagem de erro
 
-// Login
+  // Login
+  const onHandleLogin = () => {
+    // Limpa mensagens anteriores
+    setErrorMessage("");
 
-const onHandleLogin = () => {
-    // Verifica se os campos de e-mail e senha não estão vazios
-    if (email != "" && password != "") {
-        // Tenta realizar o login do usuário com o Firebase Authentication
-        signInWithEmailAndPassword(auth, email, password)
-            .then(() => console.log("Login success"))
-            // Caso ocorra um erro no login, exibe um alerta com a mensagem do erro
-            .catch((err) => Alert.alert("Login error", err.message));
+    if (email !== "" && password !== "") {
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => console.log("Login realizado com sucesso"))
+        .catch(() => setErrorMessage("Não foi possível entrar. Verifique suas credenciais e tente novamente."));
+    } else {
+      setErrorMessage("Por favor, preencha todos os campos.");
     }
-};
-
+  };
 
   return (
     <View style={styles.container}>
@@ -29,7 +30,7 @@ const onHandleLogin = () => {
       <View style={styles.whiteSheet} />
       <SafeAreaView style={styles.form}>
         <Text style={styles.title}>Entrar</Text>
-        
+
         <TextInput
           style={styles.input}
           placeholder="Digite seu email"
@@ -40,7 +41,7 @@ const onHandleLogin = () => {
           value={email}
           onChangeText={(text) => setEmail(text)}
         />
-        
+
         <TextInput
           style={styles.input}
           placeholder="Digite sua senha"
@@ -51,19 +52,24 @@ const onHandleLogin = () => {
           value={password}
           onChangeText={(text) => setPassword(text)}
         />
-        
+
         <TouchableOpacity style={styles.button} onPress={onHandleLogin}>
-          <Text style={{fontWeight: 'bold', color: '#fff', fontSize: 18}}>Entrar</Text>
+          <Text style={{ fontWeight: "bold", color: "#fff", fontSize: 18 }}>Entrar</Text>
         </TouchableOpacity>
-        
-        <View style={{marginTop: 20, flexDirection: 'row', alignItems: 'center', alignSelf: 'center'}}>
-          <Text style={{color: 'gray', fontWeight: '600', fontSize: 14}}>Não possui uma conta? </Text>
+
+        {/* Exibição de mensagem de erro */}
+        {errorMessage ? (
+          <Text style={styles.errorText}>{errorMessage}</Text>
+        ) : null}
+
+        <View style={{ marginTop: 20, flexDirection: "row", alignItems: "center", alignSelf: "center" }}>
+          <Text style={{ color: "gray", fontWeight: "600", fontSize: 14 }}>Não possui uma conta? </Text>
           <TouchableOpacity onPress={() => navigation.navigate("Signup")}>
-            <Text style={{color: '#008000', fontWeight: '600', fontSize: 14}}> Cadastre-se</Text>
+            <Text style={{ color: "#008000", fontWeight: "600", fontSize: 14 }}> Cadastre-se</Text>
           </TouchableOpacity>
         </View>
       </SafeAreaView>
-      
+
       <StatusBar barStyle="light-content" />
     </View>
   );
@@ -75,46 +81,57 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   title: {
-    fontSize: 36,
-    fontWeight: 'bold',
-    color: "#008000", 
+    fontSize: 40,
+    fontWeight: "bold",
+    color: "#008000",
     alignSelf: "center",
-    paddingBottom: 24,
+    marginBottom: 20,
   },
   input: {
     backgroundColor: "#F6F7FB",
-    height: 58,
-    marginBottom: 20,
+    height: 55,
+    marginBottom: 15,
     fontSize: 16,
     borderRadius: 10,
     padding: 12,
+    width: "40%",
+    alignSelf: "center",
   },
   backImage: {
     width: "100%",
     height: 340,
     position: "absolute",
     top: 0,
-    resizeMode: 'cover',
+    resizeMode: "cover",
   },
   whiteSheet: {
-    width: '100%',
-    height: '75%',
+    width: "100%",
+    height: "75%",
     position: "absolute",
     bottom: 0,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     borderTopLeftRadius: 60,
   },
   form: {
     flex: 1,
-    justifyContent: 'center',
-    marginHorizontal: 30,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 100,
   },
   button: {
-    backgroundColor: '#008000', 
-    height: 58,
+    backgroundColor: "#008000",
+    height: 55,
     borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 40,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 20,
+    width: "40%",
+  },
+  errorText: {
+    color: "red",
+    fontSize: 14,
+    marginTop: 10,
+    textAlign: "center",
+    width: "80%",
   },
 });
